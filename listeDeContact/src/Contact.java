@@ -50,4 +50,6 @@ public class Contact {
     }
 
     public void setNbNum(int nbNum) { this.nbNum = nbNum; }
+
+
 }
