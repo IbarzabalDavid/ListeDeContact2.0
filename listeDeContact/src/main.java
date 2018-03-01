@@ -23,8 +23,7 @@ public class main {
             switch (choix){
                 case 1:
                     Contact contact=new Contact();
-
-
+                    contact.ajouterContact();
                     map.put(contact.getNom(),contact);
                     break;
                 case 2:

@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  * Created by ibada1731710 on 2018-02-26.
  */
@@ -5,10 +8,9 @@ public class Contact {
     private String nom;
     private String nomFamille;
     private Adresse add;
-    private Telephone[] tabTel= new Telephone[10];
+    private ArrayList<Telephone> liste = new ArrayList<>();
     private Occupation occ;
-    private int nbNum;
-
+    private Scanner sc=new Scanner(System.in);
 
 
     public String getNom() {
@@ -27,9 +29,9 @@ public class Contact {
         return occ;
     }
 
-    public Telephone[] getTabTel() {return tabTel;}
+    public ArrayList<Telephone> getListe() {return liste;}
 
-    public int getNbNum() { return nbNum; }
+    public void setListe(ArrayList<Telephone> liste) {this.liste = liste;}
 
     public void setNom(String nom) {
         this.nom = nom;
@@ -43,13 +45,31 @@ public class Contact {
         this.add = add;
     }
 
-    public void setTabTel(Telephone[] tabTel) {this.tabTel = tabTel;}
 
     public void setOcc(Occupation occ) {
         this.occ = occ;
     }
 
-    public void setNbNum(int nbNum) { this.nbNum = nbNum; }
+
+    public void ajouterContact(){
+        System.out.println("---------------------------------");
+        System.out.println("Veuillez entrer les informations suivantes :"+System.lineSeparator());
+        System.out.println("Prénom :");
+        setNom(sc.next());
+        System.out.println("Nom :");
+        setNomFamille(sc.next());
+        Adresse adresse=new Adresse();
+        adresse.ajouterAdresse();
+        setAdd(adresse);
+        Occupation occupation =new Occupation();
+        occupation.ajouterOccupation();
+        setOcc(occupation);
+
+        Telephone telephone=new Telephone();
+        telephone.ajoutelTel();
+        //Criss un boucle qqpart icitte
+        liste.add(telephone);
 
 
+    }
 }
