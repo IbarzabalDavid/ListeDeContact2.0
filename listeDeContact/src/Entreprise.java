@@ -7,6 +7,7 @@ public class Entreprise {
     private String nomJob;
     private Adresse adresseJob;
     private Scanner sc=new Scanner(System.in);
+    private String input;
 
     public String getNomJob() {
         return nomJob;
@@ -30,5 +31,20 @@ public class Entreprise {
         Adresse adresseJob=new Adresse();
         adresseJob.ajouterAdresse();
         setAdresseJob(adresseJob);
+    }
+    public void modifierEntreprise(){
+        System.out.println("  Entrprise : ");
+        System.out.println("    Nom : ("+getNomJob()+")");
+        input=sc.nextLine().trim();
+        input=sc.nextLine().trim();
+        if(!input.equals("")){
+            setNomJob(input);
+        }
+        getAdresseJob().modifierAdresse();
+    }
+    public void afficherEntreprise(){
+        System.out.println("  Entrprise : ");
+        System.out.println("    Nom : "+getNomJob());
+        getAdresseJob().afficherAdresse();
     }
 }

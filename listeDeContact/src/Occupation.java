@@ -7,6 +7,7 @@ public class Occupation {
     private String poste;
     private Entreprise job;
     private Scanner sc=new Scanner(System.in);
+    private String input;
 
     public String getPoste() {
         return poste;
@@ -31,5 +32,20 @@ public class Occupation {
         entreprise.ajouterEntreprise();
         setJob(entreprise);
 
+    }
+    public void modifierOccupation(){
+        System.out.println("Occupation : ");
+        System.out.println("  Poste : ("+getPoste()+")");
+        input=sc.nextLine().trim();
+        input=sc.nextLine().trim();
+        if(!input.equals("")){
+            setPoste(input);
+        }
+        getJob().modifierEntreprise();
+    }
+    public void afficherOccupation(){
+        System.out.println("Occupation : ");
+        System.out.println("  Poste : "+getPoste());
+        getJob().afficherEntreprise();
     }
 }

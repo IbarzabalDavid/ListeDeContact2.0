@@ -11,6 +11,9 @@ public class Contact {
     private ArrayList<Telephone> liste = new ArrayList<>();
     private Occupation occ;
     private Scanner sc=new Scanner(System.in);
+    private char reponse;
+    private String input;
+
 
 
     public String getNom() {
@@ -52,6 +55,7 @@ public class Contact {
 
 
     public void ajouterContact(){
+        boolean answer=false;
         System.out.println("---------------------------------");
         System.out.println("Veuillez entrer les informations suivantes :"+System.lineSeparator());
         System.out.println("Prénom :");
@@ -65,11 +69,88 @@ public class Contact {
         occupation.ajouterOccupation();
         setOcc(occupation);
 
-        Telephone telephone=new Telephone();
-        telephone.ajoutelTel();
-        //Criss un boucle qqpart icitte
-        liste.add(telephone);
+
+
+        while (!answer){
+            System.out.println("Voulez-vous ajouter un numéro de téléphone? (o/n)");
+            reponse=sc.next().toLowerCase().charAt(0);
+            if (reponse=='o'){
+                Telephone telephone=new Telephone();
+                telephone.ajoutelTel();
+                liste.add(telephone);
+            }
+            else if (reponse=='n'){
+                answer=true;
+            }
+            else {
+                System.out.println("Entrez oui ou non");
+            }
+
+        }
 
 
     }
+    public void modifierContact(){
+        int i=0;
+        boolean keepGoing=true;
+        boolean answer=false;
+        System.out.println("Veuillez entrer les informations suivantes (laisser vide si correct) :");
+        System.out.println("---------------------------------");
+        System.out.println("Prénom : ("+getNom()+")");
+        input=sc.nextLine().trim();
+        input=sc.nextLine().trim();
+        if(!input.equals("")){
+            setNom(input);
+        }
+        System.out.println("Nom de famille : ("+getNomFamille()+")");
+        input=sc.nextLine().trim();
+        if(!input.equals("")){
+            setNomFamille(input);
+        }
+        getAdd().modifierAdresse();
+        getOcc().modifierOccupation();
+
+        while (keepGoing){
+            if (liste.contains(i)){
+                liste.get(i).modifierTelephone();
+            }
+            else {
+                keepGoing=false;
+            }
+            i++;
+        }
+
+        while (!answer){
+            System.out.println("Voulez-vous ajouter un numéro de téléphone? (o/n)");
+            reponse=sc.next().toLowerCase().charAt(0);
+            if (reponse=='o'){
+                Telephone telephone=new Telephone();
+                telephone.ajoutelTel();
+                liste.add(telephone);
+            }
+            else if (reponse=='n'){
+                answer=true;
+            }
+            else {
+                System.out.println("Entrez oui ou non");
+            }
+
+        }
+
+
+
+    }
+    public void afficherContact(){
+        System.out.println("---------------------------------");
+        System.out.println("Prénom : "+getNom());
+        System.out.println("Nom de famille : "+getNomFamille());
+        getAdd().afficherAdresse();
+        getOcc().afficherOccupation();
+        for (Telephone telephone: liste){
+            telephone.afficherTelephone();
+        }
+
+
+    }
+
 }

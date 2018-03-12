@@ -10,6 +10,7 @@ public class Adresse {
     private String appart;
     private String province;
     private String pays;
+    private String input;
 
     private Scanner sc=new Scanner(System.in);
 
@@ -61,7 +62,6 @@ public class Adresse {
         this.pays = pays;
     }
     public void ajouterAdresse(){
-        String input;
         System.out.println("Adresse :");
         System.out.println("  Numéro de porte");
         setNumPorte(sc.next());
@@ -71,7 +71,7 @@ public class Adresse {
         input=sc.nextLine().trim();
         input=sc.nextLine().trim();
         if (input.equals("")){
-           setAppart("");
+            setAppart("");
         }
         else {
             setAppart(sc.next());
@@ -83,4 +83,49 @@ public class Adresse {
         System.out.println("  Pays :");
         setPays(sc.next());
     }
+    public void modifierAdresse(){
+        System.out.println("Adresse : ");
+        System.out.println("  Numéro de porte : ("+getNumPorte()+")");
+        input=sc.nextLine().trim();
+        input=sc.nextLine().trim();
+        if(!input.equals("")){
+            setNumPorte(input);
+        }
+        System.out.println("  Rue : ("+getRue()+")");
+        input=sc.nextLine().trim();
+        if(!input.equals("")){
+            setRue(input);
+        }
+        System.out.println("  Appartement : ("+getAppart()+")");
+        input=sc.nextLine().trim();
+        if(!input.equals("")){
+            setAppart(input);
+        }
+        System.out.println("  Ville : ("+getVille()+")");
+        input=sc.nextLine().trim();
+        if(!input.equals("")){
+            setVille(input);
+        }
+        System.out.println("  Province : ("+getProvince()+")");
+        input=sc.nextLine().trim();
+        if(!input.equals("")){
+            setProvince(input);
+        }
+        System.out.println("  Pays : ("+getPays()+")");
+        input=sc.nextLine().trim();
+        if(!input.equals("")){
+            setPays(input);
+        }
+
+    }
+    public void afficherAdresse(){
+        System.out.println("Adresse : ");
+        System.out.println("  Numéro de porte : "+getNumPorte());
+        System.out.println("  Rue : "+getRue());
+        System.out.println("  Appartement : "+getAppart());
+        System.out.println("  Ville : "+getVille());
+        System.out.println("  Province : "+getProvince());
+        System.out.println("  Pays : "+getPays());
+    }
+
 }
